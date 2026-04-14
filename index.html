@@ -1,12 +1,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <meta 
-    name="description"
-    content="The team 7 ate 9 meeting minutes discussing the upcoming fight between the pres and vp"
-  >
-
   <head>
+    <meta 
+      name="description"
+      content="The team 7 ate 9 meeting minutes discussing the upcoming fight between the pres and vp"
+    >
     <title>Team 789 Meeting Notes</title>
 
     <!--Boxing glove favicon-->
@@ -41,7 +40,7 @@
     </header>
 
     <main>
-      <hr/>
+      <hr>
       <h1>Leadership meeting</h1>
       <h1>Date: 4/10/26</h1>
       
@@ -57,22 +56,24 @@
       
       <section>
         <!--Form to take name for attendance-->
-        <details>
-          <summary>
-            <b>Take attendance:</b>
-          </summary>
+        <div>
+          <details>
+            <summary>
+              <b>Take attendance:</b>
+            </summary>
 
-          <form action="" method="get" class="attendance-form">
-            <div class="attendance-form">
-              <label for="name">Enter your name: </label>
-              <input type="text" name="name" id="name" required />
-            </div>
+            <form method="get" class="attendance-form">
+              <div class="attendance-form">
+                <label for="name">Enter your name: </label>
+                <input type="text" name="name" id="name" required>
+              </div>
 
-            <div class="attendace-form">
-              <input type="submit" value="I'm here!" />
-            </div>
-          </form>
-        </details>
+              <div class="attendace-form">
+                <input type="submit" value="I'm here!">
+              </div>
+            </form>
+          </details>
+        </div>
       </section>
 
       <section>
@@ -97,7 +98,7 @@
 
         <!--Dropdown list to pick next fight matchup-->
         <label for="fight-matchup">Who do you want to fight next?</label>
-        <input list="matchups" id="fight-matchup" name="fight-matchup"/>
+        <input list="matchups" id="fight-matchup" name="fight-matchup">
 
         <datalist id="matchups">
           <option value="President vs. Treasurer"></option>
@@ -114,13 +115,13 @@
           <fieldset>
             <legend>Choose your bet level</legend>
 
-            <input type="radio" id="low" name="bet" value="10" />
+            <input type="radio" id="low" name="bet" value="10">
             <label for="low">$10</label> <br>
 
-            <input type="radio" id="medium" name="bet" value="50" />
+            <input type="radio" id="medium" name="bet" value="50">
             <label for="medium">$50</label> <br>
 
-            <input type="radio" id="high" name="bet" value="100" />
+            <input type="radio" id="high" name="bet" value="100">
             <label for="high">$100</label> <br>
           </fieldset>
         </form>
@@ -179,7 +180,7 @@
         <h2 id="sect8">Video Recording:</h2>
 
         <video controls width="250">
-          <source src="boxing-animation.mp4" type="video/mp4" />
+          <source src="boxing-animation.mp4" type="video/mp4">
 
           Download the 
           <a href="boxing-animation.mp4">MP4</a>
