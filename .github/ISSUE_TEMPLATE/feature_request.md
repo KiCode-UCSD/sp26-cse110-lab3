@@ -2,7 +2,7 @@
 name: Feature request
 about: Suggest a needed feature for this project
 title: "[FEATURE]"
-labels: enhancement
+labels: ''
 assignees: KiCode-UCSD
 
 ---
