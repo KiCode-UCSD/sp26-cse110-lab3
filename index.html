@@ -13,6 +13,12 @@
 
     <!--Boxing glove favicon-->
     <link rel="icon" type="image/x-icon" href="media-assets/favicon.ico">
+
+    <!--Internal CSS: add text shadow to h2-->
+    <style>
+      /* color | offset-x | offset-y | blur-radius */
+      h2 {text-shadow: black 2px 2px 1px;}
+    </style>
   </head>
 
   <body>
@@ -243,7 +249,9 @@
           <p><i>Site made by Ki Diaz</i></p>
 
           <i>Do you like this site?</i>
-          <button class="like site" type="button">Like!</button>
+
+          <!--Inline CSS - add margin to button-->
+          <button class="like site" type="button" style="margin:5px 10px">Like!</button>
         </footer>
       </div>
     </div>
