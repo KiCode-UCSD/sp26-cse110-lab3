@@ -1,0 +1,340 @@
+/* 
+General: 
+
+Comment
+- color (rgb, hexcode, hsl, color name, color(colorspace c1 c2 c3[ / A]), and color-mix(method, color1[ p1], color2[ p2]))
+CSS variables and fallbacks
+- background-color
+- unit (3 unique relative and absolute units)
+- box model (long and short for each)
+    -margin (-long, -short, -auto)
+    -padding (-long, -short)
+    -borders (-long, -short)
+        - (style, color, width, and radius)
+- text (-color, -text-decoration, and -text-align)
+- display (have two or more of: none, -block, inline-block, -inline)
+- sizing (-height, -width, -max-width, -min-width)
+- position (2 of the following: static, relative, fixed, -absolute, -sticky)
+- pseudo-class (-:hover, -:active)
+-layouts (-flexbox, -grid)
+responsiveness
+one or more queries based on screen width (media query)
+site works on phones, tablet/laptops, and desktops
+layout auto reflows when size changes
+- fonts (from a third party here loaded in html or css file)
+
+Selectors:
+
+- class selector (.class)
+- ID selector (#id)
+- universal selector (*)
+- element selector (element, e.g. p, h1, h2, etc.)
+- attribute selector (e.g. [attribute=foo])
+- pseudo-class selector (e.g. p:hover)
+- selector list (element, element)
+- combinators (one of each):
+    - descendant combinator (element element)
+    - child combinator (element > element)
+    - general sibling combinator (element ~ element)
+    - adjacent sibling combinator (element + element)
+    - combining 2 selectors (element.class)
+new selectors:
+- :has()
+nested selectors
+*/
+
+/* Add definitions for fonts */
+@font-face {
+    font-family: "Press Start 2P";
+    src: url("Press_Start_2P-font/PressStart2P-Regular.woff2") format("woff2"),
+        url("Press_Start_2P-font/PressStart2P-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    font-size: auto;
+}
+
+@font-face {
+    font-family: "Arimo";
+    src: url("Arimo-font/Arimo-Regular.woff2") format("woff2"),
+        url("Arimo-font/Arimo-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    font-size: auto;
+}
+
+/* Set default font */
+* {
+    font-family: "Arimo", sans-serif;
+}
+
+/* Grid display for menu, logo, content, and footer */
+.container {
+    display: grid inline;
+    grid-template-areas: 
+        "menu-cont logo"
+        "content content"
+        "footer footer";
+    grid-template-columns: minmax(170px, 1fr) 4fr;
+}
+
+.container div.menu-cont {
+    grid-area: menu-cont;
+
+    /* set nav menu as anchor for logo to align logo properly */
+    anchor-name: --img-anchor;
+}
+
+.container div.logo {
+    grid-area: logo;
+    justify-self: left;
+    justify-content: center;
+
+    padding: 2rem 1rem 2rem 1rem;
+
+    position: absolute;
+    position-anchor: --img-anchor;
+    position-area: right center;
+
+    /* fallback in case of anchor failure */
+    position-try-fallbacks: right, flip-block;
+    position-try: right, flip-block;
+}
+
+.container div.content {
+    grid-area: content;
+}
+
+.container div.footer {
+    grid-area: footer;
+}
+
+/* Grid display for content portion of website based on screen size */
+/* smaller displays */
+@media (max-width: 600px) {
+    .content-body {
+        display: grid;
+
+        grid-template-areas: 
+            "header1"         
+            "attendees"      
+            "take-attendance"
+            "agenda"         
+            "u-business"     
+            "n-business"     
+            "misc"           
+            "pic-dia"        
+            "audio"          
+            "video"           
+            "links";
+    }
+} 
+/* larger displays */
+@media (min-width: 1000px) {
+    .content-body {
+        display: grid;
+
+        column-gap: 20px;
+
+        grid-template-areas: 
+            "header1 header1 header1"         
+            "attendees agenda take-attendance"       
+            "u-business n-business misc"     
+            "pic-dia audio video"           
+            "links links links";
+
+        border: #fff8dc double 3px;
+        padding: 15px;
+    } 
+}
+
+/* Assigning sections to grid areas */
+.content-body div.header1 {
+    grid-area: header1;
+}
+
+.content-body div.attendees {
+    grid-area: attendees;
+}
+
+.content-body div.take-attendance {
+    grid-area: take-attendance;
+}
+
+.content-body div.agenda {
+    grid-area: agenda;
+}
+
+.content-body div.u-business {
+    grid-area: u-business;
+}
+
+.content-body div.n-business {
+    grid-area: n-business;
+}
+
+.content-body div.misc {
+    grid-area: misc;
+}
+
+.content-body div.pic-dia {
+    grid-area: pic-dia;
+}
+
+.content-body div.audio {
+    grid-area: audio;
+}
+
+.content-body div.video {
+    grid-area: video;
+}
+
+.content-body div.links {
+    grid-area: links;
+}
+
+/* Team 789 Logo at top of page */
+.logo #logo-pic {
+    border: #0f0858 10px;
+    border-radius: 5px;
+    /* top | right | bottom | left */
+    border-style: groove ridge ridge groove;
+
+    /* top and bottom | left and right */
+    padding: .4rem .4rem;
+
+    width: 80%;
+    min-width: 1in;
+    max-width: 4.25in;
+
+    height: auto;
+    max-height: 350px;
+
+    justify-self: center;
+}
+
+/* Setting navigation menu alignment */
+.menu {
+    display: flex block;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    flex-flow: auto;
+    align-items: normal;
+    justify-self: flex-start;
+
+    padding: .5em .5em;
+}
+
+/* general link visuals (besides nav menu) */
+a {
+    color: hsl(177, 70%, 41%);
+
+    text-decoration: underline hsla(178, 46%, 21%, 0.798);
+    text-decoration-thickness: .5px;
+
+    /* Setting navigation menu link visuals */
+    &[href*="#sect"] {
+        text-align: center;
+        color: black;
+        text-decoration: none;
+        
+        background-color: #fff8dc;
+        border: #898576, groove, 4px;
+        margin: .2em .5em;
+
+        /* nav menu buttons are yellow when hovered over */
+        &:hover {
+            background-color: yellow;
+        }
+    }
+}
+
+/* links look darker when pressed */
+a:active {
+    color: #0f0858;
+
+    text-decoration: underline #0f0858;
+    text-decoration-thickness: .5px;
+}
+
+/* sticky header and background so it's not transparent */
+.header1 {
+    position: sticky;
+    top: 2px;
+    z-index: 2;
+
+    background-color: firebrick;
+}
+
+body {
+    background-color: firebrick;
+}
+
+/* Set appearance of header (title and date) */
+h1 {
+    text-align: center;
+    font-family: "Press Start 2P";
+    /* color | offset-x | offset-y | blur-radius */
+    text-shadow: #000000 2px 2px 3px;
+}
+
+/* set color for all Arimo text */
+h1,h2,h3,p,li,i,figure,label,legend,b {
+    /*color(colorspace c1 c2 c3[ / A]*/
+    color: color(srgb 255 248 220);
+}
+
+section > p {
+    margin: 1em;
+}
+
+h2 + label {
+    margin: 1em;
+}
+
+h2 ~ ul, ol {
+    margin: 1em;
+}
+
+/* Set appearance of interactive attendance form */
+.take-attendance{
+    /*color-mix(method, color1[ p1], color2[ p2])*/
+    border-color: color-mix(in srgb, #fff8dc 80%, #b22222 60%);
+    border-style: double;
+    border-width: .3em;
+    border-radius: 3pt;
+
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+/* z-index of audio player to be under sticky header*/
+audio:has(~figcaption) {
+    z-index: 1;
+}
+
+/* footer appearance */
+footer {
+    background-color:#4a4855;
+
+    border: #32313a ridge;
+    border-radius: 5px;
+
+    padding: .5em .7em;
+
+    margin: auto;
+}
+
+/* like button is yellow when hovered over*/
+button:hover {
+    background-color: rgb(255, 210, 28);
+}
+
